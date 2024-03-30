@@ -1,31 +1,28 @@
-// imports
 
-function MenuItem() {
-  //create a state isFavorite that has the inital value of isFavorite that comes from the props
+import { useState } from "react";
 
-  return (
-    <section className="itemContainer">
-      <figure className="imgContainer">
-        {/* the image will receive the url src from the props. Uncomment the line below with CTRL + / */}
-        <img src={""} alt="Food from the restaurant" />
-        <figcaption>
-          {/* the h2 will receive the item name from the props */}
-          <h2>{}</h2>
-          {/* the p will receive the item description from the props */}
-          <p>{}</p>
-        </figcaption>
-      </figure>
-      {/* the span will receive the item price from the props */}
-      <span>{} EUR</span>
+function MenuItem({ itemName, description, foodImage, price, isFavorite }) {
+    const [favorite, setFavorite] = useState(isFavorite);
 
-      {/* the button to play with the isFavorite state:
-              - onClick, will toggle the isFavorite state,
-              - content will be conditionally rendered as "❤️" or "🖤", depending on the value of isFavorite
-          */}
+    const toggleFavorite = () => {
+        setFavorite(!favorite);
+    };
 
-      <button></button>
-    </section>
-  );
+    return (
+        <section className="itemContainer">
+            <figure className="imgContainer">
+                <img src={foodImage} alt="Food from the restaurant" />
+                <figcaption>
+                    <h2>{itemName}</h2>
+                    <p>{description}</p>
+                </figcaption>
+            </figure>
+            <span>{price} EUR</span>
+            <button onClick={toggleFavorite}>
+                {favorite ? "❤️" : "🖤"}
+            </button>
+        </section>
+    );
 }
 
 export default MenuItem;
