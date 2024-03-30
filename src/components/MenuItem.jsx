@@ -19,7 +19,7 @@ function MenuItem({ itemName, description, foodImage, price, isFavorite }) {
             </figure>
             <span>{price} EUR</span>
             <button onClick={toggleFavorite}>
-                {favorite ? "❤️" : "🖤"}
+                {favorite ? "🖤": "❤️"}
             </button>
         </section>
     );
